@@ -29,7 +29,7 @@ jobs:
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git checkout -B database
+          git checkout --orphan database
           git add db.json
           git commit -m "Update db.json"
           git push --set-upstream origin database --force
