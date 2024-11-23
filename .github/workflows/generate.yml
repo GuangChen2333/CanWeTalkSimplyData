@@ -30,8 +30,7 @@ jobs:
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git checkout --orphan database
-          find . -type f ! -name 'db.json' -exec rm -f {} +
-          find . -type d ! -name '.' ! -name '.git' -exec rm -rf {} +
+          find . \( -type f ! -name 'db.json' \) -a \( -type d ! -name '.' ! -name '.git' \) -exec rm -rf {} +
           git add db.json
           git commit -m "Update db.json"
           git push --set-upstream origin database --force
