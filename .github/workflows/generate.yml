@@ -32,4 +32,4 @@ jobs:
           git checkout -B database
           git add db.json
           git commit -m "Update db.json"
-          git push --force
+          git push --set-upstream origin database --force
