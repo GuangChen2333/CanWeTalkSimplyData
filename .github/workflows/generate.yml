@@ -25,13 +25,23 @@ jobs:
       - name: Generate DB and Sitemaps
         run: python generate.py
 
-      - name: Commit and Push
+      - name: Config Git
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
+
+      - name: Commit and Push DB
+        run: |
           git checkout --orphan database
           git reset
           git add db.json
-          git add sitemap.xml
           git commit -m "Update db.json"
           git push --set-upstream origin database --force
+
+      - name: Commit and Push Sitemap
+        run: |
+          git checkout --orphan sitemap
+          git reset
+          git add sitemap.xml
+          git commit -m "Update sitemap.xml"
+          git push --set-upstream origin sitemap --force
