@@ -2,6 +2,7 @@ import os
 import json
 from io import StringIO
 
+base_url = 'https://cwts.mooneze.org/#'
 word_path = "./words"
 
 word_path = os.path.abspath(word_path)
@@ -64,5 +65,24 @@ with open('db.json', 'w', encoding='utf-8') as f:
     f: StringIO
 
     json.dump(words, f, indent=2, separators=(',', ': '), ensure_ascii=False)
+
+print("Done.")
+print("Writing sitemap")
+
+with open('sitemap.xml', 'w', encoding='utf-8') as f:
+    f.write(
+        '<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n'
+        '<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n'
+        '    <url>\n'
+        f'      <loc>{base_url}/</loc>\n'
+        '    </url>\n'
+    )
+    for word in words:
+        f.write(
+            '    <url>\n'
+            f'      <loc>{base_url}/result?word={word["name"]}</loc>\n'
+            '    </url>\n'
+        )
+    f.write('</urlset>')
 
 print("Done.")

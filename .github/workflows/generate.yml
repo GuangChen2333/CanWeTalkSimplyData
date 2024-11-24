@@ -22,7 +22,7 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Generate DB
+      - name: Generate DB and Sitemaps
         run: python generate.py
 
       - name: Commit and Push
@@ -32,5 +32,6 @@ jobs:
           git checkout --orphan database
           git reset
           git add db.json
+          git add sitemap.xml
           git commit -m "Update db.json"
           git push --set-upstream origin database --force
