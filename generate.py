@@ -74,13 +74,13 @@ with open('sitemap.xml', 'w', encoding='utf-8') as f:
         '<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n'
         '<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n'
         '    <url>\n'
-        f'      <loc>{base_url}/</loc>\n'
+        f'        <loc>{base_url}/</loc>\n'
         '    </url>\n'
     )
     for word in words:
         f.write(
             '    <url>\n'
-            f'      <loc>{base_url}/result?word={word["name"]}</loc>\n'
+            f'        <loc>{base_url}/result?word={word["name"]}</loc>\n'
             '    </url>\n'
         )
     f.write('</urlset>')
