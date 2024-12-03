@@ -19,8 +19,9 @@ for file_name in os.listdir(word_path):
         lines = f.readlines()
 
     name = ''
-    pos = ''
-    desc = ''
+
+    pos = []
+    desc = []
     examples = []
 
     flag = None
@@ -42,9 +43,9 @@ for file_name in os.listdir(word_path):
                 continue
 
             if flag == 'pos':
-                pos = content
+                pos.append(content)
             elif flag == 'desc':
-                desc = content
+                desc.append(content)
             elif flag == 'examples':
                 if content.startswith('- '):
                     examples.append(content.split('- ')[1])
@@ -52,8 +53,8 @@ for file_name in os.listdir(word_path):
     words.append({
         'id': current_id,
         'name': name,
-        'pos': pos,
-        'description': desc,
+        'pos': ' '.join(pos),
+        'description': ' '.join(desc),
         'examples': examples
     })
 
